@@ -36,3 +36,7 @@ lerna-debug.log*
 
 # NestJS Description
 nest_README.md
+
+
+# misc
+.env
