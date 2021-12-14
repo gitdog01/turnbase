@@ -1,14 +1,14 @@
-import { Controller, Get, Req, Body } from '@nestjs/common';
+import { Controller, Post, Req, Body } from '@nestjs/common';
 import { AppService } from './app.service';
-
+import { CreateUserDto } from './dto/create-user.dto';
 // router
 
-@Controller()
+@Controller('user')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get('help/:id')
-  getHello(@Req() request: Request): string {
+  @Post('help/:id')
+  create(@Req() request: Request, @Body() data: CreateUserDto): string {
     return this.appService.getHello();
   }
 }
