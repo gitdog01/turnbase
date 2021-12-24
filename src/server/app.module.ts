@@ -3,13 +3,13 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
-import { LoggerMiddleware } from './logger.middleware';
+import { ConfigModule } from '@nestjs/config';
+import { LoggerMiddleware } from './common/middlewares/logger.middleware';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost/game-project', {
-      useNewUrlParser: true,
-    }),
+    ConfigModule.forRoot(),
+    MongooseModule.forRoot(process.env.MONGO_PATH),
     UsersModule,
   ],
   controllers: [AppController],

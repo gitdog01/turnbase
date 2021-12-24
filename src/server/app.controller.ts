@@ -3,12 +3,12 @@ import { AppService } from './app.service';
 import { CreateUserDto } from './dto/create-user.dto';
 // router
 
-@Controller('user')
+@Controller('')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Post('help/:id')
-  create(@Req() request: Request, @Body() data: CreateUserDto): string {
+  create(): string {
     return this.appService.getHello();
   }
 }
