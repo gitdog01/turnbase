@@ -32,6 +32,15 @@ export class User {
 
   @Prop()
   deckId: string;
+
+  readonly readOnlyData: { name: string; email: string };
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
+
+UserSchema.virtual('readOnlyData').get(function () {
+  return {
+    name: this.name,
+    email: this.email,
+  };
+});
